@@ -1,55 +1,76 @@
 
 public class Node {
 	
+	int key, p, val, maxval;
+	Node parent, left, right;
+	Endpoint emax, endPoint;
+	int color; //0 = black, 1 = red
+	boolean isNil;
+	
 	//constructor
+	public Node(int key, int p, Node parent, Node left, Node right, Endpoint endPoint) {
+		this.key = key;
+		this.p = p;
+		this.parent = parent;
+		this.left = left;
+		this.right = right;
+		this.endPoint = endPoint;
+		this.color = 1;
+		isNil = false;
+	}
+	
+	//nil constructor
+	public Node() {
+		isNil = true;
+		color = 0;
+	}
 	
 	public Node getParent() {
-		
-		return null;
+		return parent;
 	}
 	
 	public Node getLeft() {
-		
-		return null;
+		return left;
 	}
 	
 	public Node getRight() {
-		
-		return null;
+		return right;
 	}
 	
 	public int getKey() {
-		
-		return 0;
+		return key;
 	}
 	
 	public int getP() {
-		
-		return 0;
+		return p;
 	}
 	
 	public int getVal() {
-		
-		return 0;
+		if( isNil ) {
+			return 0;
+		} else {
+			return left.getVal() + val + right.getVal();
+		}
 	}
 	
 	public int getMaxVal() {
+		//TODO:
 		
 		return 0;
 	}
 	
 	public Endpoint getEndpoint() {
-		
-		return null;
+		return endPoint;
 	}
 	
 	public Endpoint getEmax() {
+		//TODO:
+		
 		
 		return null;
 	}
 	
 	public int getColor() {
-		
-		return 0;
+		return color;
 	}
 }
