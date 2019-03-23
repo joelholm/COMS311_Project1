@@ -8,12 +8,9 @@ public class Node {
 	boolean isNil;
 	
 	//constructor
-	public Node(int key, int p, Node parent, Node left, Node right, Endpoint endPoint) {
+	public Node(int key, int p, Endpoint endPoint) {
 		this.key = key;
 		this.p = p;
-		this.parent = parent;
-		this.left = left;
-		this.right = right;
 		this.endPoint = endPoint;
 		this.color = 1;
 		isNil = false;
