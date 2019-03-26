@@ -43,6 +43,13 @@ public class RBTree {
 		
 			//if not valid, go through case 1, 2, or 3
 		
+		//update the values
+		updateNode(null);
+		
+	}
+	
+	//update this node and this node's parents
+	void updateNode(Node n) {
 		
 	}
 }
