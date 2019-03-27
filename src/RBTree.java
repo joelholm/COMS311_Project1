@@ -29,7 +29,6 @@ public class RBTree {
 		if( newNode == null ) {
 			throw new NullPointerException("Inserted node is null");
 		}
-		size++;
 		//if tree is empty make root
 		if( size == 0 ) {
 			root = newNode;
@@ -37,12 +36,26 @@ public class RBTree {
 			newNode.left = nilNode;
 			newNode.right = nilNode;
 		}
+		size++;
 		//otherwise, start at root and climb down tree until a spot is found
+		Node y = nilNode;
+		Node x = root;
 		
-		//then check validity of tree
-		
-			//if not valid, go through case 1, 2, or 3
-		
-		
+		while(x != null) {
+			y = x;
+			if(newNode.val < x.val)
+				x = x.left;
+			else
+				x = x.right;
+		}
+		newNode.parent = y;
+		if(newNode.val < y.val)
+			y.left = newNode;
+		else
+			y.right = newNode;
+		newNode.left = nilNode;
+		newNode.right = nilNode;
+		newNode.color = 1;
+		//update the tree
 	}
 }

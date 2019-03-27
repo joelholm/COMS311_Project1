@@ -1,6 +1,7 @@
 
 public class Intervals {
 	
+	RBTree T;
 	
 	public Intervals() {
 		
@@ -16,14 +17,11 @@ public class Intervals {
 		return true;
 	}
 	
-	public int findPOM() {
-		
-		
-		return 0;
+	public int findPOM() {		
+		return T.root.maxval;
 	}
 	
 	public RBTree getRBTree() {
-		
-		return null;
+		return T;
 	}
 }

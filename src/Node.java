@@ -52,8 +52,12 @@ public class Node {
 	
 	public int getMaxVal() {
 		//TODO:
-		
-		return 0;
+		//If maximum is in left subtree
+		return left.maxval;
+		//If maximum is at current node
+		return left.val + p;
+		//If maximum is in right subtree
+		return left.maxval + p + right.maxval;
 	}
 	
 	public Endpoint getEndpoint() {
