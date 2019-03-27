@@ -41,7 +41,7 @@ public class RBTree {
 			Node y = nilNode;
 			Node x = root;
 
-			while(x != null) {
+			while(x != nilNode) {
 				y = x;
 				if(newNode.val < x.val)
 					x = x.left;
@@ -61,7 +61,6 @@ public class RBTree {
 			updateNode(null);
 		}
 		size++;
-		System.out.println("Added " + newNode.key);
 	}
 	
 	//update this node and this node's parents

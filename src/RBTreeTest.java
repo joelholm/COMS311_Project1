@@ -20,9 +20,8 @@ class RBTreeTest {
 		}
 		
 		
-		
 		//Testing height
-		assertEquals( rb.getHeight(), 4 );
+		assertEquals( 4, rb.getHeight() );
 		
 		//Testing Position of nodes
 		Node nodePos2 = rb.root.left, nodePos6 = rb.root.right.left, 
