@@ -44,6 +44,40 @@ public class Node {
 		return p;
 	}
 	
+	public Node min(Node x) {
+		while(!x.left.isNil)
+			x = x.left;
+		return x;
+	}
+	
+	public Node max(Node x) {
+		while(!x.right.isNil)
+			x = x.right;
+		return x;
+	}
+	
+	public Node successor(Node x) {
+		if(!x.right.isNil)
+			return min(x.right);
+		Node y = x.parent;
+		while(!y.isNil && x == y.right) {
+			x = y;
+			y = y.parent;
+		}
+		return y;
+	}
+	
+	public Node predecessor(Node x) {
+		if(!x.left.isNil)
+			return max(x.left);
+		Node y = x.parent;
+		while(!y.isNil && x == y.left) {
+			x = y;
+			y = y.parent;
+		}
+		return y;
+	}
+	
 	public int getVal() {
 		if( isNil ) {
 			return 0;
@@ -54,12 +88,16 @@ public class Node {
 	
 	public int getMaxVal() {
 		//TODO:
+		//OR DO YOU LOOK AT THE EMAX NOT MAXVAL
 		//If maximum is in left subtree
-		//return left.maxval;
-		//If maximum is at current node
-		//return left.val + p;
+		if(left.maxval >= maxval)
+			return left.maxval;
 		//If maximum is in right subtree
-		return left.maxval + p + right.maxval;
+		if(right.maxval > maxval)
+			return left.maxval + p + right.maxval;
+		//If maximum is at current node
+		else
+			return left.val + p;		
 	}
 	
 	public Endpoint getEndpoint() {
