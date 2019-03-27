@@ -56,6 +56,15 @@ public class RBTree {
 		newNode.left = nilNode;
 		newNode.right = nilNode;
 		newNode.color = 1;
-		//update the tree
+
+		//update the values
+		updateNode(null);
+		
+	}
+	
+	//update this node and this node's parents
+	void updateNode(Node n) {
+		
+
 	}
 }

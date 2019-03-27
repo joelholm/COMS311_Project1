@@ -4,15 +4,17 @@ public class Node {
 	int key, p, val, maxval;
 	Node parent, left, right;
 	Endpoint emax, endPoint;
-	int color; //0 = black, 1 = red
+	int color; //0 = red, 1 = black
+	int id;
 	boolean isNil;
 	
 	//constructor
-	public Node(int key, int p, Endpoint endPoint) {
+	public Node(int key, int p, Endpoint endPoint, int id) {
 		this.key = key;
 		this.p = p;
 		this.endPoint = endPoint;
 		this.color = 1;
+		this.id = id;
 		isNil = false;
 	}
 	
@@ -53,9 +55,9 @@ public class Node {
 	public int getMaxVal() {
 		//TODO:
 		//If maximum is in left subtree
-		return left.maxval;
+		//return left.maxval;
 		//If maximum is at current node
-		return left.val + p;
+		//return left.val + p;
 		//If maximum is in right subtree
 		return left.maxval + p + right.maxval;
 	}
