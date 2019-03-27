@@ -9,12 +9,9 @@ public class Intervals {
 	}
 	
 	public void intervalInsert(int a, int b) {
-		
-		//new Node( , 1, idNum)
-		//new Node( , -1, idNum) 
-		
 		//insert into RBTree
-		
+		T.insertNode(new Node(a, 1, new Endpoint(a), idNum));
+		T.insertNode(new Node(b, -1, new Endpoint(b), idNum));
 		idNum++;
 	}
 	
@@ -24,7 +21,7 @@ public class Intervals {
 	}
 	
 	public int findPOM() {		
-		return T.root.maxval;
+		return T.root.emax.value;
 	}
 	
 	public RBTree getRBTree() {
