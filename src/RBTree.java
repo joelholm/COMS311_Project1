@@ -61,7 +61,7 @@ public class RBTree {
 			RBFixup(newNode);
 			
 			//update the values
-			recUpdateNode(null);
+			//recUpdateNode(null);
 			
 		}
 		size++;
@@ -128,8 +128,12 @@ public class RBTree {
 		}
 	}
 	
-	public void printTree() {
-		
+	public void printTree(Node n) {
+		if( n != nilNode ) {
+			System.out.print("Key: " + n.key + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
+			printTree(n.left);
+			printTree(n.right);
+		}
 	}
 	
 	public void RBFixup(Node n) {
