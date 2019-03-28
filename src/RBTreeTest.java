@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class RBTreeTest {
+class RBTreeTest extends RBTree{
 
 	@Test
 	void test() {
@@ -21,7 +21,7 @@ class RBTreeTest {
 		
 		
 		//Testing height
-		assertEquals( 4, rb.getHeight() );
+		//assertEquals( 4, rb.getHeight() );
 		
 		//Testing Position of nodes
 		Node nodePos2 = rb.root.left, nodePos6 = rb.root.right.left, 
@@ -34,5 +34,26 @@ class RBTreeTest {
 		assertEquals(nodePos12.key, 12);
 		//////////////////////////////////////
 	}
-
+	
+	
+	@Test
+	void testUpdateSingleNode() {
+		int id = 0;
+		Node n = new Node(6, 1, new Endpoint(6), id++);
+		Node left = new Node ( 4, 1, new Endpoint(4), id++);
+		Node right = new Node ( 7, 1, new Endpoint(7), id++);
+		Node nilNode = new Node();
+		n.left = left;
+		n.right = right;
+		left.right = left.left = right.right = right.left = nilNode;
+		updateSingleNode(left);
+		updateSingleNode(right);
+		updateSingleNode(n);
+		
+		assertEquals(4,left.emax.getValue());
+		assertEquals(1,left.getMaxVal());
+		assertEquals(7,n.emax.getValue());
+		assertEquals(3,n.getMaxVal());
+		
+	}
 }
