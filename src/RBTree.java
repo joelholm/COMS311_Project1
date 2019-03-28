@@ -57,8 +57,12 @@ public class RBTree {
 			newNode.right = nilNode;
 			newNode.color = 1;
 
+			//fix up tree
+			RBFixup(newNode);
+			
 			//update the values
 			recUpdateNode(null);
+			
 		}
 		size++;
 	}
@@ -127,4 +131,82 @@ public class RBTree {
 	public void printTree() {
 		
 	}
+	
+	public void RBFixup(Node n) {
+		while(n.parent.color == 0) {
+			if(n.parent == n.parent.parent.left) {
+				Node y = n.parent.parent.right;
+				if(y.color == 0) {
+					n.parent.color = 1;
+					y.color = 1;
+					n.parent.parent.color = 0;
+					n = n.parent.parent;
+				}
+				else {
+					if(n == n.parent.right) {
+						n = n.parent;
+						leftRotate(n);
+					}
+					n.parent.color = 1;
+					n.parent.parent.color = 0;
+					rightRotate(n.parent.parent);
+				}
+			}
+			else {
+				Node y = n.parent.parent.left;
+				if(y.color == 0) {
+					n.parent.color = 1;
+					y.color = 1;
+					n.parent.parent.color = 0;
+					n = n.parent.parent;
+				}
+				else {
+					if(n == n.parent.left) {
+						n = n.parent;
+						rightRotate(n);
+					}
+					n.parent.color = 1;
+					n.parent.parent.color = 0;
+					leftRotate(n.parent.parent);
+				}
+			}
+		}
+		root.color = 1;
+	}
+	
+	public void leftRotate(Node n) {
+		Node y = n.right;
+		n.right = y.left;
+		if(!y.left.isNil)
+			y.left.parent = n;
+		if(n.parent.isNil)
+			root = y;
+		else if(n == n.parent.left)
+			n.parent.left = y;
+		else
+			n.parent.right = y;
+		y.left = n;
+		n.parent = y;
+	}
+	
+	public void rightRotate(Node n) {
+		Node y = n.left;
+		n.left = y.right;
+		if(!y.right.isNil)
+			y.right.parent = n;
+		if(n.parent.isNil)
+			root = y;
+		else if(n == n.parent.right)
+			n.parent.right = y;
+		else
+			n.parent.left = y;
+		y.right = n;
+		n.parent = y;
+	}
 }
+
+
+
+
+
+
