@@ -14,7 +14,7 @@ public class Node {
 		this.key = key;
 		this.p = p;
 		this.endPoint = endPoint;
-		this.color = 1;
+		this.color = 0;
 		this.id = id;
 		isNil = false;
 		marked = false;
@@ -23,7 +23,7 @@ public class Node {
 	//nil constructor
 	public Node() {
 		isNil = true;
-		color = 0;
+		color = 1;
 		val = 0;
 		maxval = 0;
 	}
