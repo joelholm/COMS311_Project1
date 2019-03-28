@@ -106,7 +106,13 @@ public class Node {
 	
 	public Endpoint getEmax() {
 		//TODO:
-		
+		//If node has no children or is the max
+		if(right.isNil && left.isNil)
+			return endPoint;
+		//if max is on the left subtree
+			//return left.emax
+		//if max is on the right subtree
+			//return right.emax
 		
 		return null;
 	}
