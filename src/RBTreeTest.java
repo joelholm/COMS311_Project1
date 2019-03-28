@@ -49,10 +49,11 @@ class RBTreeTest extends RBTree{
 		rb.insertNode(new Node(19, 1, null, id++));
 		rb.insertNode(new Node(8, 1, null, id++));
 		
-		assertEquals(rb.root.right.key, 38);
-		assertEquals(rb.root.key, 41);
-		//assertEquals(rb.root.left.key, 19);
+		rb.printTree(rb.root);
 		
+		assertEquals(rb.root.right.key, 41);
+		assertEquals(rb.root.key, 38);
+		assertEquals(rb.root.left.key, 19);
 	}
 
 	
