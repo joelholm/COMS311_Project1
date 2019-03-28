@@ -7,6 +7,7 @@ public class Node {
 	int color; //0 = red, 1 = black
 	int id;
 	boolean isNil;
+	boolean marked;
 	
 	//constructor
 	public Node(int key, int p, Endpoint endPoint, int id) {
@@ -16,12 +17,15 @@ public class Node {
 		this.color = 1;
 		this.id = id;
 		isNil = false;
+		marked = false;
 	}
 	
 	//nil constructor
 	public Node() {
 		isNil = true;
 		color = 0;
+		val = 0;
+		maxval = 0;
 	}
 	
 	public Node getParent() {
@@ -79,11 +83,7 @@ public class Node {
 	}
 	
 	public int getVal() {
-		if( isNil ) {
-			return 0;
-		} else {
-			return left.getVal() + val + right.getVal();
-		}
+		return val;
 	}
 	
 	public int getMaxVal() {
