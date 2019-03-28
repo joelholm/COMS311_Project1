@@ -34,5 +34,22 @@ class RBTreeTest {
 		assertEquals(nodePos12.key, 12);
 		//////////////////////////////////////
 	}
+	
+	@Test
+	void rotationTest() {
+		RBTree rb = new RBTree();
+		int id = 1;
+		rb.insertNode(new Node(41, 1, null, id++));
+		rb.insertNode(new Node(38, 1, null, id++));
+		rb.insertNode(new Node(31, 1, null, id++));
+		rb.insertNode(new Node(12, 1, null, id++));
+		rb.insertNode(new Node(19, 1, null, id++));
+		rb.insertNode(new Node(8, 1, null, id++));
+		
+		assertEquals(rb.root.right.key, 38);
+		assertEquals(rb.root.key, 41);
+		//assertEquals(rb.root.left.key, 19);
+		
+	}
 
 }
