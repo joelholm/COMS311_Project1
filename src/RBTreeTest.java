@@ -54,6 +54,48 @@ class RBTreeTest extends RBTree{
 		assertEquals(rb.root.right.key, 41);
 		assertEquals(rb.root.key, 38);
 		assertEquals(rb.root.left.key, 19);
+		
+		//Case 1 right child
+		RBTree rb2 = new RBTree();
+		id = 1;
+		rb2.insertNode(new Node(5, 1, null, id++));
+		rb2.insertNode(new Node(6, 1, null, id++));
+		rb2.insertNode(new Node(3, 1, null, id++));
+		rb2.insertNode(new Node(4, 1, null, id++));
+		
+		assertEquals(rb2.root.left.color, 1);
+		
+		//Case 1 left child
+		RBTree rb3 = new RBTree();
+		id = 1;
+		rb3.insertNode(new Node(5, 1, null, id++));
+		rb3.insertNode(new Node(6, 1, null, id++));
+		rb3.insertNode(new Node(3, 1, null, id++));
+		rb3.insertNode(new Node(2, 1, null, id++));
+				
+		assertEquals(rb3.root.left.color, 1);
+		
+		//Case 2 & 3 left subtree
+		RBTree rb4 = new RBTree();
+		id = 1;
+		rb4.insertNode(new Node(5, 1, null, id++));
+		rb4.insertNode(new Node(3, 1, null, id++));
+		rb4.insertNode(new Node(4, 1, null, id++));
+					
+		assertEquals(rb4.root.left.color, 0);
+		assertEquals(rb4.root.right.color, 0);
+		assertEquals(rb4.root.key, 4);
+		
+		//Case 2 & 3 right subtree
+		RBTree rb5 = new RBTree();
+		id = 1;
+		rb5.insertNode(new Node(3, 1, null, id++));
+		rb5.insertNode(new Node(5, 1, null, id++));
+		rb5.insertNode(new Node(4, 1, null, id++));
+							
+		assertEquals(rb5.root.left.color, 0);
+		assertEquals(rb5.root.right.color, 0);
+		assertEquals(rb5.root.key, 4);
 	}
 
 	
