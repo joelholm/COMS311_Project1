@@ -78,7 +78,7 @@ public class RBTree {
 		
 		//if this node is marked, update the parent node's other child.
 		if( n.marked ) {
-			//unmark both children
+			//unmark both children of this node's parent
 			n.parent.right.marked = n.parent.left.marked = false;
 			//find and update the other child
 			if( n.parent.left == n ) {
@@ -156,6 +156,10 @@ public class RBTree {
 					}
 					n.parent.color = 1;
 					n.parent.parent.color = 0;
+					//mark n and n's grandparent, because in the end these two nodes will be the children
+					//marking will be handled in recUpdateNode
+					n.marked = true;
+					n.parent.parent.marked = true;
 					rightRotate(n.parent.parent);
 				}
 			}
@@ -174,6 +178,10 @@ public class RBTree {
 					}
 					n.parent.color = 1;
 					n.parent.parent.color = 0;
+					//mark n and n's grandparent, because in the end these two nodes will be the children
+					//marking will be handled in recUpdateNode
+					n.marked = true;
+					n.parent.parent.marked = true;
 					leftRotate(n.parent.parent);
 				}
 			}

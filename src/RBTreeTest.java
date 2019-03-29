@@ -4,38 +4,56 @@ import org.junit.jupiter.api.Test;
 
 class RBTreeTest extends RBTree{
 
+	/**
+	 * 	Things to add still
+	 * 
+	 * 	1.Update height of RBTree
+	 *  2.Test intervals
+	 *  3.General Testing
+	 */
+	
+
 	@Test
 	void testRBInsert() {
-		
 		RBTree rb = new RBTree();
-		
 		int id = 1;
-		
-		
-		/////////////Tree example/////////////
 		Node nodes[] = new Node[12];
+		nodes[0] = new Node(1,1, new Endpoint(1),id++);
+		nodes[1] = new Node(2,1,new Endpoint(2),id++);
+		nodes[2] = new Node(3,1,new Endpoint(3),id++);
+		nodes[3] = new Node(4,1,new Endpoint(4),id++);
+		nodes[4] = new Node(5,-1,new Endpoint(5),id++);
+		nodes[5] = new Node(6,-1,new Endpoint(6),id++);
+		nodes[6] = new Node(7,-1,new Endpoint(7),id++);
+		nodes[7] = new Node(8,1,new Endpoint(8),id++);
+		nodes[8] = new Node(9,-1,new Endpoint(9),id++);
+		nodes[9] = new Node(10,-1,new Endpoint(10),id++);
+		nodes[10] = new Node(11,1,new Endpoint(11),id++);
+		nodes[11] = new Node(12,-1,new Endpoint(12),id++);
 		for( int i = 1; i <= 12; i++ ) {
-			nodes[i - 1] = new Node(i,-1,null,id++);
 			rb.insertNode(nodes[i - 1]);
 		}
 		
 		rb.printTree(rb.root);
 		
 		//Testing height
-		//assertEquals( 4, rb.getHeight() );
+		//assertEquals( 4, rb.getHeight() );		//TODO:
 		
 		//Testing Position of nodes
 		Node nodePos2 = rb.root.left, nodePos6 = rb.root.right.left, 
 			 nodePos7 = rb.root.right.left.right, nodePos1 = rb.root.left.left,
 			 nodePos12 = rb.root.right.right.right.right;
-		/*
+		//testing tree structure
 		assertEquals(nodePos2.key, 2);
 		assertEquals(nodePos6.key, 6);
 		assertEquals(nodePos7.key, 7);
 		assertEquals(nodePos1.key, 1);
 		assertEquals(nodePos12.key, 12);
-		*/
-		//////////////////////////////////////
+		
+		//testing emax and maxval
+		int treeEmax = rb.root.getEmax().value;
+		assertEquals( treeEmax == 4 , true);
+		assertEquals( rb.root.getMaxVal(), 4);
 	}
 	
 	@Test
