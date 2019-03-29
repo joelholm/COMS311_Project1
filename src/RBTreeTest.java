@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class RBTreeTest extends RBTree{
 
 	@Test
-	void test() {
+	void testRBInsert() {
 		
 		RBTree rb = new RBTree();
 		
@@ -46,17 +46,25 @@ class RBTreeTest extends RBTree{
 		Node left = new Node ( 4, 1, new Endpoint(4), id++);
 		Node right = new Node ( 7, 1, new Endpoint(7), id++);
 		Node nilNode = new Node();
+		Node np = new Node(8, -1, new Endpoint(8), id++);
 		n.left = left;
 		n.right = right;
 		left.right = left.left = right.right = right.left = nilNode;
+		np.left = n;
+		np.right = nilNode;
 		updateSingleNode(left);
 		updateSingleNode(right);
 		updateSingleNode(n);
+		updateSingleNode(np);
 		
+		//testing self max
 		assertEquals(4,left.emax.getValue());
 		assertEquals(1,left.getMaxVal());
+		//testing right max
 		assertEquals(7,n.emax.getValue());
 		assertEquals(3,n.getMaxVal());
-		
+		//testing left max
+		assertEquals(7, np.emax.getValue());
+		assertEquals(3, np.getMaxVal());
 	}
 }

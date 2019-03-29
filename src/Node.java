@@ -14,7 +14,7 @@ public class Node {
 		this.key = key;
 		this.p = p;
 		this.endPoint = endPoint;
-		this.color = 1;
+		this.color = 0;
 		this.id = id;
 		isNil = false;
 		marked = false;
@@ -87,17 +87,7 @@ public class Node {
 	}
 	
 	public int getMaxVal() {
-		//TODO:
-		//OR DO YOU LOOK AT THE EMAX NOT MAXVAL
-		//If maximum is in left subtree
-		if(left.maxval >= maxval)
-			return left.maxval;
-		//If maximum is in right subtree
-		if(right.maxval > maxval)
-			return left.maxval + p + right.maxval;
-		//If maximum is at current node
-		else
-			return left.val + p;		
+		return maxval;	
 	}
 	
 	public Endpoint getEndpoint() {
@@ -105,10 +95,7 @@ public class Node {
 	}
 	
 	public Endpoint getEmax() {
-		//TODO:
-		
-		
-		return null;
+		return emax;
 	}
 	
 	public int getColor() {

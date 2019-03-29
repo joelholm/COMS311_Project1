@@ -61,7 +61,7 @@ public class RBTree {
 			RBFixup(newNode);
 			
 			//update the values
-			//recUpdateNode(null);
+			recUpdateNode(newNode);
 			
 		}
 		size++;
@@ -77,7 +77,9 @@ public class RBTree {
 		
 		//if this node is marked, update the parent node's other child.
 		if( n.marked ) {
-			//find the other child
+			//unmark both children
+			n.parent.right.marked = n.parent.left.marked = false;
+			//find and update the other child
 			if( n.parent.left == n ) {
 				updateSingleNode(n.parent.right);
 			} else if( n.parent.right == n ){
@@ -98,9 +100,9 @@ public class RBTree {
 		n.val = n.left.getVal() + n.p + n.right.getVal();
 
 		//update eval and emax
-		int case1 = n.left.maxval;
-		int case2 = n.left.val + n.p;
-		int case3 = n.left.val + n.p + n.right.maxval;
+		int case1 = n.left.getMaxVal();
+		int case2 = n.left.getVal() + n.p;
+		int case3 = n.left.getVal() + n.p + n.right.getMaxVal();
 		if( case1 >= case2 && case1 >= case3 ) {
 			//case 1
 			n.maxval = case1;
@@ -108,8 +110,8 @@ public class RBTree {
 			if( n.left.isNil ) {
 				n.emax = n.getEndpoint();
 			} else {
-				//otherwise get endpoint of left
-				n.emax = n.left.getEndpoint();
+				//otherwise get emax of left
+				n.emax = n.left.getEmax();
 			}
 		} else if( case2 >= case1 && case2 >= case3 ) {
 			//case 2
@@ -122,8 +124,8 @@ public class RBTree {
 			if( n.right.isNil ) {
 				n.emax = n.getEndpoint();
 			} else {
-				//otherwise get endpoint of right
-				n.emax = n.right.getEndpoint();
+				//otherwise get emax of right
+				n.emax = n.right.getEmax();
 			}
 		}
 	}
@@ -208,8 +210,6 @@ public class RBTree {
 		n.parent = y;
 	}
 }
-
-
 
 
 
