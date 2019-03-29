@@ -23,7 +23,7 @@ public class Node {
 	//nil constructor
 	public Node() {
 		isNil = true;
-		color = 0;
+		color = 1;
 		val = 0;
 		maxval = 0;
 	}

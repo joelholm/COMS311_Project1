@@ -36,6 +36,7 @@ public class RBTree {
 			newNode.parent = nilNode;
 			newNode.left = nilNode;
 			newNode.right = nilNode;
+			newNode.color = 1;
 		} else {
 			//otherwise, start at root and climb down tree until a spot is found
 			Node y = nilNode;
@@ -43,19 +44,19 @@ public class RBTree {
 
 			while(x != nilNode) {
 				y = x;
-				if(newNode.val < x.val)
+				if(newNode.key < x.key)
 					x = x.left;
 				else
 					x = x.right;
 			}
 			newNode.parent = y;
-			if(newNode.val < y.val)
+			if(newNode.key < y.key)
 				y.left = newNode;
 			else
 				y.right = newNode;
 			newNode.left = nilNode;
 			newNode.right = nilNode;
-			newNode.color = 1;
+			newNode.color = 0;
 
 			//fix up tree
 			RBFixup(newNode);
@@ -132,7 +133,7 @@ public class RBTree {
 	
 	public void printTree(Node n) {
 		if( n != nilNode ) {
-			System.out.print("Key: " + n.key + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
+			System.out.print("Key: " + n.key + " " + n.color + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
 			printTree(n.left);
 			printTree(n.right);
 		}
@@ -185,6 +186,7 @@ public class RBTree {
 		n.right = y.left;
 		if(!y.left.isNil)
 			y.left.parent = n;
+		y.parent = n.parent;
 		if(n.parent.isNil)
 			root = y;
 		else if(n == n.parent.left)
@@ -200,6 +202,7 @@ public class RBTree {
 		n.left = y.right;
 		if(!y.right.isNil)
 			y.right.parent = n;
+		y.parent = n.parent;
 		if(n.parent.isNil)
 			root = y;
 		else if(n == n.parent.right)
