@@ -10,6 +10,7 @@ class RBTreeTest extends RBTree{
 	 * 	1.Update height of RBTree
 	 *  2.Test intervals
 	 *  3.General Testing
+	 *  4.Fix null pointer when endpoint is null
 	 */
 	
 
@@ -18,23 +19,21 @@ class RBTreeTest extends RBTree{
 		RBTree rb = new RBTree();
 		int id = 1;
 		Node nodes[] = new Node[12];
-		nodes[0] = new Node(1,1, new Endpoint(1),id++);
-		nodes[1] = new Node(2,1,new Endpoint(2),id++);
-		nodes[2] = new Node(3,1,new Endpoint(3),id++);
-		nodes[3] = new Node(4,1,new Endpoint(4),id++);
-		nodes[4] = new Node(5,-1,new Endpoint(5),id++);
-		nodes[5] = new Node(6,-1,new Endpoint(6),id++);
-		nodes[6] = new Node(7,-1,new Endpoint(7),id++);
-		nodes[7] = new Node(8,1,new Endpoint(8),id++);
-		nodes[8] = new Node(9,-1,new Endpoint(9),id++);
-		nodes[9] = new Node(10,-1,new Endpoint(10),id++);
-		nodes[10] = new Node(11,1,new Endpoint(11),id++);
-		nodes[11] = new Node(12,-1,new Endpoint(12),id++);
+		nodes[0] = new Node(1,1, new Endpoint(1,1),id++);
+		nodes[1] = new Node(2,1,new Endpoint(2,1),id++);
+		nodes[2] = new Node(3,1,new Endpoint(3,1),id++);
+		nodes[3] = new Node(4,1,new Endpoint(4,1),id++);
+		nodes[4] = new Node(5,-1,new Endpoint(5,-1),id++);
+		nodes[5] = new Node(6,-1,new Endpoint(6,-1),id++);
+		nodes[6] = new Node(7,-1,new Endpoint(7,-1),id++);
+		nodes[7] = new Node(8,1,new Endpoint(8,1),id++);
+		nodes[8] = new Node(9,-1,new Endpoint(9,-1),id++);
+		nodes[9] = new Node(10,-1,new Endpoint(10,-1),id++);
+		nodes[10] = new Node(11,1,new Endpoint(11,1),id++);
+		nodes[11] = new Node(12,-1,new Endpoint(12,-1),id++);
 		for( int i = 1; i <= 12; i++ ) {
 			rb.insertNode(nodes[i - 1]);
 		}
-		
-		rb.printTree(rb.root);
 		
 		//Testing height
 		//assertEquals( 4, rb.getHeight() );		//TODO:
@@ -54,6 +53,9 @@ class RBTreeTest extends RBTree{
 		int treeEmax = rb.root.getEmax().value;
 		assertEquals( treeEmax == 4 , true);
 		assertEquals( rb.root.getMaxVal(), 4);
+		
+		//test height
+		assertEquals(rb.getSize(), 12);
 	}
 	
 	@Test
@@ -120,11 +122,11 @@ class RBTreeTest extends RBTree{
 	@Test
 	void testUpdateSingleNode() {
 		int id = 0;
-		Node n = new Node(6, 1, new Endpoint(6), id++);
-		Node left = new Node ( 4, 1, new Endpoint(4), id++);
-		Node right = new Node ( 7, 1, new Endpoint(7), id++);
+		Node n = new Node(6, 1, new Endpoint(6,1), id++);
+		Node left = new Node ( 4, 1, new Endpoint(4,1), id++);
+		Node right = new Node ( 7, 1, new Endpoint(7,1), id++);
 		Node nilNode = new Node();
-		Node np = new Node(8, -1, new Endpoint(8), id++);
+		Node np = new Node(8, -1, new Endpoint(8,-1), id++);
 		n.left = left;
 		n.right = right;
 		left.right = left.left = right.right = right.left = nilNode;

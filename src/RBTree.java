@@ -23,7 +23,7 @@ public class RBTree {
 	}
 	
 	public int getHeight() {
-		return height;							//Need to remember to update this
+		return height;
 	}
 	
 	public void insertNode(Node newNode) {
@@ -68,10 +68,17 @@ public class RBTree {
 		size++;
 	}
 	
-	//update this node and this node's parents until the root node
-	//if a rotation occured, two nodes should be marked, one will be hit as this recursive
-	//method climbs up the tree, and the other will be the sibling of the hit node
-	//This sibling will be updated also because of the rotation.
+
+	/**
+	 * This is a recursive function which starts at a leaf node and steps up the tree until the root.
+	 * Every node this function passes will have it's val, maxval, and emax values updated by 
+	 * the helper function updateSingleNode(Node n).  There is the possibility of a rotation
+	 * when adding a node to the tree.  If this happens there will be one node pushed out of 
+	 * the path this algorithm takes.  That is why the if( n.marked ) line is included.
+	 * This will update that node which would have been missed before.
+	 * 
+	 * @param n	is the node which was added to the tree.  This should be a leaf
+	 */
 	public void recUpdateNode(Node n) {
 		//update this node
 		updateSingleNode(n);
@@ -96,6 +103,11 @@ public class RBTree {
 		}
 	}
 	
+	/**
+	 * This function updates the val, maxval, emax values in Node n.
+	 * 
+	 * @param n is the node which will be updated
+	 */
 	public void updateSingleNode(Node n) {
 		//update val
 		n.val = n.left.getVal() + n.p + n.right.getVal();
@@ -131,6 +143,12 @@ public class RBTree {
 		}
 	}
 	
+	/**
+	 * This function recursively prints all children nodes of the input node.  
+	 * Mostly meant for debugging.
+	 * 
+	 * @param n is the node to start the recursive print
+	 */
 	public void printTree(Node n) {
 		if( n != nilNode ) {
 			System.out.print("Key: " + n.key + " " + n.color + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
@@ -138,6 +156,7 @@ public class RBTree {
 			printTree(n.right);
 		}
 	}
+	
 	
 	public void RBFixup(Node n) {
 		while(n.parent.color == 0) {

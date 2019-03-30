@@ -9,7 +9,7 @@ public class Node {
 	boolean isNil;
 	boolean marked;
 	
-	//constructor
+	//standard node constructor
 	public Node(int key, int p, Endpoint endPoint, int id) {
 		this.key = key;
 		this.p = p;
@@ -20,7 +20,7 @@ public class Node {
 		marked = false;
 	}
 	
-	//nil constructor
+	//nil node constructor
 	public Node() {
 		isNil = true;
 		color = 1;

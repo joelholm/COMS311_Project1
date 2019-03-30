@@ -2,13 +2,13 @@
 public class Endpoint {
 	
 	int value;
+	int p;
 	
-	//constructor
-	public Endpoint(int value) {
+	public Endpoint(int value, int p) {
 		this.value = value;
+		this.p = p;
 	}
 	
-	//Returns value of the endpoint
 	public int getValue() {
 		return value;
 	}

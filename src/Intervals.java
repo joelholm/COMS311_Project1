@@ -6,12 +6,17 @@ public class Intervals {
 	
 	public Intervals() {
 		idNum = 1;
+		T = new RBTree();
 	}
 	
 	public void intervalInsert(int a, int b) {
+		//check that a <= b
+		if( a > b ) {
+			throw new IllegalArgumentException("a and b must follow a <= b");
+		}
 		//insert into RBTree
-		T.insertNode(new Node(a, 1, new Endpoint(a), idNum));
-		T.insertNode(new Node(b, -1, new Endpoint(b), idNum));
+		T.insertNode(new Node(a, 1, new Endpoint(a,1), idNum));
+		T.insertNode(new Node(b, -1, new Endpoint(b,-1), idNum));
 		idNum++;
 	}
 	
@@ -20,8 +25,11 @@ public class Intervals {
 		return true;
 	}
 	
-	public int findPOM() {		
-		return T.root.emax.value;
+	public int findPOM() {
+		if( T.root == null ) {
+			return 0;
+		}
+		return T.getRoot().getEmax().getValue();
 	}
 	
 	public RBTree getRBTree() {
