@@ -160,7 +160,7 @@ public class RBTree {
 	 */
 	public void printTree(Node n) {
 		if( !n.isNil ) {
-			System.out.print("Key: " + n.key + " " + n.color + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
+			System.out.print("Key: " + n.key + " c: " + n.color + " p: " + n.p + " v: "+ n.val + " mv: " + n.maxval  + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
 			printTree(n.left);
 			printTree(n.right);
 		}
