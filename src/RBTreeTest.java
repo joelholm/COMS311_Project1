@@ -36,7 +36,7 @@ class RBTreeTest extends RBTree{
 		}
 		
 		//Testing height
-		//assertEquals( 4, rb.getHeight() );		//TODO:
+		assertEquals( 5, rb.getHeight() );
 		
 		//Testing Position of nodes
 		Node nodePos2 = rb.root.left, nodePos6 = rb.root.right.left, 
@@ -120,21 +120,21 @@ class RBTreeTest extends RBTree{
 		//Testing the height
 		RBTree rb6 = new RBTree();
 		id = 1;
-		rb6.insertNode(new Node(10, 1, new Endpoint(1), id++));
+		rb6.insertNode(new Node(10, 1, new Endpoint(1,1), id++));
 		assertEquals(rb6.height, 1);
-		rb6.insertNode(new Node(6, 1, new Endpoint(2), id++));
+		rb6.insertNode(new Node(6, 1, new Endpoint(2,1), id++));
 		assertEquals(rb6.height, 2);
-		rb6.insertNode(new Node(15, 1, new Endpoint(3), id++));
-		rb6.insertNode(new Node(12, 1, new Endpoint(4), id++));
-		rb6.insertNode(new Node(18, 1, new Endpoint(5), id++));
+		rb6.insertNode(new Node(15, 1, new Endpoint(3,1), id++));
+		rb6.insertNode(new Node(12, 1, new Endpoint(4,1), id++));
+		rb6.insertNode(new Node(18, 1, new Endpoint(5,1), id++));
 		assertEquals(rb6.height, 3);
-		rb6.insertNode(new Node(20, 1, new Endpoint(6), id++));
+		rb6.insertNode(new Node(20, 1, new Endpoint(6,1), id++));
 		assertEquals(rb6.height, 4);
-		rb6.insertNode(new Node(3, 1, new Endpoint(6), id++));
-		rb6.insertNode(new Node(4, 1, new Endpoint(6), id++));
-		rb6.insertNode(new Node(1, 1, new Endpoint(6), id++));
+		rb6.insertNode(new Node(3, 1, new Endpoint(6,1), id++));
+		rb6.insertNode(new Node(4, 1, new Endpoint(6,1), id++));
+		rb6.insertNode(new Node(1, 1, new Endpoint(6,1), id++));
 		assertEquals(rb6.height, 4);
-		rb6.insertNode(new Node(21, 1, new Endpoint(6), id++));
+		rb6.insertNode(new Node(21, 1, new Endpoint(6,1), id++));
 		assertEquals(rb6.height, 4);
 		
 		rb.printTree(rb6.root);
