@@ -47,7 +47,7 @@ public class RBTree {
 
 			while(x != nilNode) {
 				y = x;
-				if(newNode.key < x.key)
+				if(newNode.key < x.key || (newNode.key == x.key && newNode.p == -1) )
 					x = x.left;
 				else
 					x = x.right;
