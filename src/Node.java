@@ -48,40 +48,6 @@ public class Node {
 		return p;
 	}
 	
-	public Node min(Node x) {
-		while(!x.left.isNil)
-			x = x.left;
-		return x;
-	}
-	
-	public Node max(Node x) {
-		while(!x.right.isNil)
-			x = x.right;
-		return x;
-	}
-	
-	public Node successor(Node x) {
-		if(!x.right.isNil)
-			return min(x.right);
-		Node y = x.parent;
-		while(!y.isNil && x == y.right) {
-			x = y;
-			y = y.parent;
-		}
-		return y;
-	}
-	
-	public Node predecessor(Node x) {
-		if(!x.left.isNil)
-			return max(x.left);
-		Node y = x.parent;
-		while(!y.isNil && x == y.left) {
-			x = y;
-			y = y.parent;
-		}
-		return y;
-	}
-	
 	public int getVal() {
 		return val;
 	}
