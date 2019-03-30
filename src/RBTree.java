@@ -2,7 +2,7 @@
 public class RBTree {
 	
 	Node root, nilNode;
-	int size, height;
+	int size, height, hFlag;
 	
 	public RBTree() {
 		size = 0;
@@ -27,6 +27,7 @@ public class RBTree {
 	}
 	
 	public void insertNode(Node newNode) {
+		hFlag = 0;
 		if( newNode == null ) {
 			throw new NullPointerException("Inserted node is null");
 		}
@@ -37,10 +38,12 @@ public class RBTree {
 			newNode.left = nilNode;
 			newNode.right = nilNode;
 			newNode.color = 1;
+			height = 1;
 		} else {
 			//otherwise, start at root and climb down tree until a spot is found
 			Node y = nilNode;
 			Node x = root;
+			int count = 1;
 
 			while(x != nilNode) {
 				y = x;
@@ -48,7 +51,13 @@ public class RBTree {
 					x = x.left;
 				else
 					x = x.right;
+				count++;
 			}
+			if(height < count) {
+				height = count;
+				hFlag = 1;
+			}
+				
 			newNode.parent = y;
 			if(newNode.key < y.key)
 				y.left = newNode;
@@ -132,7 +141,7 @@ public class RBTree {
 	}
 	
 	public void printTree(Node n) {
-		if( n != nilNode ) {
+		if( !n.isNil ) {
 			System.out.print("Key: " + n.key + " " + n.color + "\t\tleft.key: " + n.left.key + "\t\tright.key: " + n.right.key + "\n");
 			printTree(n.left);
 			printTree(n.right);
@@ -161,6 +170,8 @@ public class RBTree {
 					n.marked = true;
 					n.parent.parent.marked = true;
 					rightRotate(n.parent.parent);
+					if(hFlag == 1)
+						height--;
 				}
 			}
 			else {
@@ -183,6 +194,8 @@ public class RBTree {
 					n.marked = true;
 					n.parent.parent.marked = true;
 					leftRotate(n.parent.parent);
+					if(hFlag == 1)
+						height--;
 				}
 			}
 		}
