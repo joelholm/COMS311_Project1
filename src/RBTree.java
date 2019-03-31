@@ -1,3 +1,8 @@
+/**
+ * The RBTree class represents the red-black tree.
+ * @author Colin Ishman, Joel Holm
+ *
+ */
 
 public class RBTree {
 	
@@ -26,6 +31,13 @@ public class RBTree {
 		return height;
 	}
 	
+	/**
+	 * Inserts a node into the Red Black Tree. After the node is in the right spot and is 
+	 * red, RBFixup is called to recolor the tree and make sure the tree follows the
+	 * rules. Then recUpdateNode is called to update all of the values.
+	 * 
+	 * @param newNode the new node that is being inserted into the tree
+	 */
 	public void insertNode(Node newNode) {
 		hFlag = 0;
 		if( newNode == null ) {
@@ -166,7 +178,12 @@ public class RBTree {
 		}
 	}
 	
-	
+	/**
+	 * This function takes a node n and recolors and put it in the right place
+	 * in the Red Black Tree.
+	 * 
+	 * @param n is the node that was just inserted
+	 */
 	public void RBFixup(Node n) {
 		while(n.parent.color == 0) {
 			if(n.parent == n.parent.parent.left) {
@@ -221,6 +238,11 @@ public class RBTree {
 		root.color = 1;
 	}
 	
+	/**
+	 * Takes a node n and rotates it to the left moving nodes around it.
+	 * 
+	 * @param n is the node that needs to be rotated to the correct position
+	 */
 	public void leftRotate(Node n) {
 		Node y = n.right;
 		n.right = y.left;
@@ -237,6 +259,11 @@ public class RBTree {
 		n.parent = y;
 	}
 	
+	/**
+	 * Takes a node n and rotates it to the right moving nodes around it.
+	 * 
+	 * @param n is the node that needs to be rotated to the correct position
+	 */
 	public void rightRotate(Node n) {
 		Node y = n.left;
 		n.left = y.right;

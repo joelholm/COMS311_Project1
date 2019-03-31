@@ -1,3 +1,8 @@
+/**
+ * The Node class represents the nodes of the red-black tree.
+ * @author Colin Ishman, Joel Holm
+ *
+ */
 
 public class Node {
 	

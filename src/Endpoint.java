@@ -1,4 +1,8 @@
-
+/**
+ * The Endpoint class represents an endpoint and its value.
+ * @author Colin Ishman, Joel Holm
+ * 
+ */
 public class Endpoint {
 	
 	int value;

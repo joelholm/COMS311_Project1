@@ -1,4 +1,8 @@
-
+/**
+ * The intervals class represents a collection of intervals.
+ * @author Colin Ishman, Joel Holm
+ *
+ */
 public class Intervals {
 	
 	RBTree T;
