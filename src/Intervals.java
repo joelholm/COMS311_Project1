@@ -26,7 +26,7 @@ public class Intervals {
 	
 	public boolean intervalDelete(int intervalID) {
 		//don't do
-		return true;
+		return false;
 	}
 	
 	public int findPOM() {

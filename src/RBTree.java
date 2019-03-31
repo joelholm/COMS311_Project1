@@ -59,7 +59,7 @@ public class RBTree {
 
 			while(x != nilNode) {
 				y = x;
-				if(newNode.key < x.key || (newNode.key == x.key && newNode.p == -1) )
+				if(newNode.key < x.key || (newNode.key == x.key && newNode.p == 1) )
 					x = x.left;
 				else
 					x = x.right;
@@ -71,7 +71,7 @@ public class RBTree {
 			}
 				
 			newNode.parent = y;
-			if(newNode.key < y.key)
+			if(newNode.key < y.key || (newNode.key == y.key && newNode.p == 1) )
 				y.left = newNode;
 			else
 				y.right = newNode;
@@ -82,9 +82,16 @@ public class RBTree {
 			//fix up tree
 			RBFixup(newNode);
 			
-			//update the values
-			recUpdateNode(newNode);
-			
+			//Time to update the vaules in each node in O(h) time
+			//after the fix up, newNode may have children who need to be updated,so
+			//if newNode has nonNil children, start updating from either child
+			if( !newNode.right.isNil || !newNode.left.isNil ) {
+				//start from newNode's left child (right would work too)
+				recUpdateNode(newNode.left);
+			} else {
+				//start from newNode
+				recUpdateNode(newNode);
+			}
 		}
 		size++;
 	}
@@ -113,8 +120,6 @@ public class RBTree {
 				updateSingleNode(n.parent.right);
 			} else if( n.parent.right == n ){
 				updateSingleNode(n.parent.left);
-			} else {
-				throw new NullPointerException("checking whether left/right child went wrong");					//can delete if it works
 			}
 		}
 		

@@ -16,6 +16,9 @@ public class Node {
 	
 	//standard node constructor
 	public Node(int key, int p, Endpoint endPoint, int id) {
+		if( endPoint == null ) {
+			endPoint = new Endpoint(0,0);
+		}
 		this.key = key;
 		this.p = p;
 		this.endPoint = endPoint;

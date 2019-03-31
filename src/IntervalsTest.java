@@ -9,7 +9,7 @@ class IntervalsTest {
 		Intervals itv = new Intervals();
 		
 		itv.intervalInsert(1, 2);
-		itv.intervalInsert(1, 3);
+		itv.intervalInsert(2, 3);
 		itv.intervalInsert(3, 8);
 		itv.intervalInsert(3, 5);
 		itv.intervalInsert(3, 10);
@@ -18,7 +18,9 @@ class IntervalsTest {
 		
 		
 		int pom = itv.findPOM();
-		
+		itv.getRBTree().printTree(itv.getRBTree().root);
+
+		assertEquals(itv.getRBTree().getRoot().getMaxVal(), 4);
 		assertEquals(pom, 3);
 		
 	}

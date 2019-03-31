@@ -4,16 +4,6 @@ import org.junit.jupiter.api.Test;
 
 class RBTreeTest extends RBTree{
 
-	/**
-	 * 	Things to add still
-	 * 
-	 * 	1.Update height of RBTree
-	 *  2.Test intervals
-	 *  3.General Testing
-	 *  4.Fix null pointer when endpoint is null
-	 */
-	
-
 	@Test
 	void testRBInsert() {
 		RBTree rb = new RBTree();
